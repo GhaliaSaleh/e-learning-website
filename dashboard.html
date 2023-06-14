@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Page</title>
+  <style>body, h1, h2, h3, h4, h5, h6, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+   
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li:not(:last-child) {
+    margin-right: 1rem;
+  }
+  
+  #logout-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  #logout-button:hover {
+    background-color: darkred;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .dashboard-section {
+    margin-bottom: 30px;
+  }
+  
+  .dashboard-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(33.33% - 20px);
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .card p {
+    color: #888;
+  }
+  
+  .course-list li {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-list li h4 {
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .course-list li p {
+    color: #888;
+    margin-left: 10px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .cover{
+    height: 100vh;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    header {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px 10px;
+    }
+  
+    nav ul {
+      flex-direction: column;
+    }
+  
+    nav li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  
+    main {
+      padding: 10px;
+    }
+  
+    .dashboard-cards {
+      gap: 10px;
+    }
+  
+    .card {
+      flex-basis: 100%;
+    }
+  
+    .course-list li {
+      flex-direction: column;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    #logout-button {
+      font-size: 12px;
+      padding: 3px 6px;
+    }
+  
+    .dashboard-cards {
+      flex-direction: column;
+    }
+  
+    .card {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+
+  </style>
+</head>
+<body>
+</head>
+<body>
+   <header>
+    <h1>Smarty Platform</h1>
+    <nav>
+        <ul>
+         <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          <li><button id="logout-button" onclick="location.href='index.html'">Logout</button></li>
+        </ul>
+      </nav>
+    </header>
+  
+  <main class="cover">
+    <section class="dashboard-section">
+      <h2>Welcome, Ghalia</h2>
+      <div class="dashboard-cards">
+        <div class="card">
+          <h3>Total Courses</h3>
+          <p id="total-courses">0</p>
+        </div>
+        <div class="card">
+          <h3>Completed Courses</h3>
+          <p id="completed-courses">0</p>
+        </div>
+        <div class="card">
+          <h3>Pending Courses</h3>
+          <p id="pending-courses">0</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="dashboard-section">
+      <h2>Your Courses</h2>
+      <ul class="course-list">
+      </ul>
+    </section>
+    
+    <section class="dashboard-section">
+      <h2>Add a Course</h2>
+      <form id="add-course-form">
+        <select id="course-select" required>
+          <option value="">Select a course</option>
+          <option value="Introduction to HTML">Introduction to HTML</option>
+          <option value="CSS Fundamentals">CSS Fundamentals</option>
+          <option value="JavaScript Basics">JavaScript Basics</option>
+        </select>
+        <select id="course-status" required>
+          <option value="Completed">Completed</option>
+          <option value="In Progress">In Progress</option>
+        </select>
+        <button type="submit">Add Course</button>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+   <div class="container">
+     <p>&copy; 2023 Smarty Platform. All Rights Reserved.</p>
+   </div>
+ </footer>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get the necessary elements
+      const courseList = document.querySelector(".course-list");
+      const totalCourses = document.querySelector("#total-courses");
+      const completedCourses = document.querySelector("#completed-courses");
+      const pendingCourses = document.querySelector("#pending-courses");
+  
+      // Simulated data for courses
+      let courses = [
+        { id: 1, title: "Introduction to HTML", status: "Completed" },
+        { id: 2, title: "CSS Fundamentals", status: "In Progress" },
+        { id: 3, title: "JavaScript Basics", status: "In Progress" }
+      ];
+  
+      // Render the course list and update course counts
+      function renderCourseList() {
+        courseList.innerHTML = "";
+        courses.forEach(function(course) {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `
+            <h4>${course.title}</h4>
+            <p>${course.status}</p>
+            <button class="delete-button" data-id="${course.id}">Delete</button>
+          `;
+          courseList.appendChild(listItem);
+        });
+  
+        // Update course counts
+        totalCourses.textContent = courses.length;
+        completedCourses.textContent = courses.filter(course => course.status === "Completed").length;
+        pendingCourses.textContent = courses.filter(course => course.status === "In Progress").length;
+      }
+  
+      // Call the renderCourseList function to initially populate the course list and update course counts
+      renderCourseList();
+  
+      // Add a new course
+      function addCourse(title, status) {
+        const newCourse = {
+          id: Date.now(),
+          title,
+          status
+        };
+        courses.push(newCourse);
+        renderCourseList();
+      }
+  
+      // Delete a course
+      function deleteCourse(id) {
+        courses = courses.filter(course => course.id !== id);
+        renderCourseList();
+      }
+  
+      // Example: Add a new course
+      const addCourseForm = document.querySelector("#add-course-form");
+      addCourseForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const courseSelect = document.querySelector("#course-select");
+        const statusInput = document.querySelector("#course-status");
+        const title = courseSelect.value;
+        const status = statusInput.value;
+        if (title !== "") {
+          addCourse(title, status);
+          courseSelect.value = "";
+          statusInput.value = "";
+        }
+      });
+  
+      // Example: Delete a course
+      courseList.addEventListener("click", function(event) {
+        if (event.target.classList.contains("delete-button")) {
+          const courseId = parseInt(event.target.dataset.id);
+          deleteCourse(courseId);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

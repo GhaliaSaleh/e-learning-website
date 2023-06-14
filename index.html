@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home</title>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+   <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+         <a class="navbar-brand" href="#">
+            <img src="image/images-removebg-preview.png" alt="Smarty Platform Logo">
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+            <ul class="navbar-nav">
+               <li class="nav-item">
+                  <a class="nav-link" href="index.html" style="font-weight:bold;">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="dashboard.html" style="font-weight:bold;">Dashboard</a>
+               </li>
+            </ul>
+         </div>
+         <button id="loginBtn" onclick="document.getElementById('login-form-container').style.display='block'">Login</button>
+      </nav>
+   </header>
+
+   <main>
+      <div id="login-form-container">
+         <div id="login-form">
+            <span id="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+               <label for="username">Username:</label>
+               <input type="text" id="username" name="username"><br><br>
+               <label for="password">Password:</label>
+               <input type="password" id="password" name="password"><br><br>
+               <input type="submit" value="Submit">
+            </form>
+         </div>
+      </div>
+
+      <div class="cover">
+         <h1>Welcome to Smarty Platform</h1>
+      </div>
+   </main>
+
+   <footer>
+      <div class="container">
+         <p>&copy; 2023 Smarty Platform. All Rights Reserved.</p>
+      </div>
+   </footer>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+   <script src="script.js"></script>
+
+   <style>
+      header {
+         position: fixed;
+         width: 100%;
+      }
+
+      /* Reset some default styles */
+      body, h1, h2, h3, h4, h5, h6, p, ul, li {
+         margin: 0;
+         padding: 0;
+      }
+
+      .navbar-brand {
+         padding: 10px;
+      }
+
+      .navbar-brand img {
+         width: 50px;
+         height: auto;
+      }
+
+      #loginBtn {
+         background-color: #4CAF50;
+         border: none;
+         color: white;
+         padding: 5px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin-right: 6px;
+         cursor: pointer;
+         border-radius: 5px;
+         width: 8%;
+      }
+
+      #login-form-container {
+         display: none;
+         position: fixed;
+         z-index: 1000;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.75);
+      }
+
+      #login-form {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         position: relative;
+         margin: auto;
+         max-width: 400px;
+         padding: 20px;
+         border-radius: 5px;
+         background-color: #fff;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+         transition: transform 0.3s ease-in-out;
+      }
+
+      #login-form.show {
+         transform: scale(1);
+      }
+
+      #close {
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         font-size: 24px;
+         color: #999;
+         cursor: pointer;
+         transition: color 0.3s ease-in-out;
+      }
+
+      #close:hover {
+         color: #333;
+      }
+
+      form {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 100%;
+      }
+
+      label {
+         font-size: 16px;
+         margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+         padding: 10px;
+         margin-bottom: 10px;
+         border-radius: 5px;
+         border: none;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+         transition: box-shadow 0.3s ease-in-out;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+         outline: none;
+         box-shadow: 0 0 10px #3498db;
+      }
+
+      input[type="submit"] {
+         padding: 10px;
+         border-radius: 5px;
+         border: none;
+         background-color: #3498db;
+         color: #fff;
+         cursor: pointer;
+         transition: background-color 0.3s ease-in-out;
+      }
+
+      input[type="submit"]:hover {
+         background-color: darken(#3498db, 10%);
+      }
+
+      #login-form-container[aria-hidden="true"] {
+         display: none;
+      }
+
+      .cover {
+         background-image: linear-gradient(to bottom, #80f0ff7a, #000000);
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: #fff;
+         text-align: center;
+      }
+
+      .cover h1 {
+         font-size: 2rem;
+         font-weight: 300;
+         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+         padding: 5px;
+         font-family: fantasy;
+         letter-spacing: 1px;
+      }
+
+      footer {
+         background-color:#333;
+         color: white;
+         padding: 20px;
+         text-align: center;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+      }
+
+      .container {
+         max-width: 960px;
+         margin: 0 auto;
+      }
+
+      a {
+         color:whitesmoke;
+         text-decoration: none;
+         font-size: 4rem;
+         font-weight: 700;
+         margin-left: 10px;
+         letter-spacing: 1px;
+      }
+
+      .navbar-nav li:first-child a {
+         color: white;
+         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+
+      }
+
+      @media only screen and (max-width: 767px) {
+        .navbar-toggler {
+      display: none;
+   }
+
+   #loginBtn {
+      width: auto;
+      margin-right: 6px;
+   }
+      }
+   </style>
+</body>
+</html>

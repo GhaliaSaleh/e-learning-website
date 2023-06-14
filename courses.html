@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Professional Courses Page</title>
+  <style>
+
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+#logout-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#logout-button:hover {
+  background-color: darkred;
+}
+
+.hero {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.hero h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.hero p {
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #333;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+
+
+.courses .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap:1.2rem;
+   justify-content: center;
+   align-items: flex-start;
+  
+}
+
+.courses .box-container .box{
+   border-radius: .5rem;
+   background-color: var(--white);
+   padding: 2rem;
+   width: 100%;
+
+}
+
+.courses .box-container .box .tutor{
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   margin-bottom: 2.5rem;
+}
+
+.courses .box-container .box .tutor img{
+   height: 5rem;
+   width: 5rem;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.courses .box-container .box .tutor h3{
+   font-size: 1.8rem;
+   color: var(--black);
+   margin-bottom: .2rem;
+}
+
+.courses .box-container .box .tutor span{
+   font-size: 1.3rem;
+   color:var(--light-color);
+}
+
+.courses .box-container .box .thumb{
+   position: relative;
+}
+
+.courses .box-container .box .thumb span{
+   position: absolute;
+   top:1rem; left: 1rem;
+   border-radius: .5rem;
+   padding: .5rem 1.5rem;
+   background-color: rgba(0,0,0,.3);
+   color: #fff;
+   font-size: 1.5rem;
+}
+
+.courses .box-container .box .thumb img{
+   width: 50%;
+   height: 15rem;
+   object-fit: cover;
+   border-radius: .5rem;
+}
+
+.courses .box-container .box .title{
+   font-size: 2rem;
+   color: var(--black);
+   padding-bottom: .5rem;
+   padding-top: 1rem;
+}
+
+.courses .complete-btn{
+   text-align: center;
+   margin-top: 2rem;
+   display: inline-block;
+  background-color:black;
+  color:white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.courses .complete-btn:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+.heading {
+   font-size: 2.5rem;
+   color: #000;
+   text-align: center;
+   margin-bottom: 2rem;
+   margin-top: 2rem;
+   font-family: cursive;
+   text-transform: uppercase;
+}
+
+footer {
+         background-color:#333;
+         color: white;
+         padding: 20px;
+         text-align: center;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+      }
+
+      .container {
+         max-width: 960px;
+         margin: 0 auto;
+      }
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav ul {
+    flex-direction: column;
+  }
+  
+  nav li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+  .hero {
+    padding: 40px 0;
+  }
+}
+
+
+</style>
+
+
+</head>
+<body>
+  <header>
+    <h1>Smarty Platform</h1>
+    <nav>
+        <ul>
+         <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          <li><button id="logout-button" onclick="location.href='index.html'">Logout</button></li>
+        </ul>
+      </nav>
+    </header>
+  
+  <section class="hero">
+    <div class="container">
+      <h2>Learn New Skills</h2>
+      <P>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis obcaecati rem, excepturi ut odit quos temporibus suscipit facilis! Consequuntur, optio.</P>
+      <a href="#" class="btn">Browse Courses</a>
+    </div>
+  </section>
+  
+  <section class="courses">
+
+    <h1 class="heading">our courses</h1>
+ 
+    <div class="box-container">
+       <div class="box">
+          <div class="tutor">
+             <img src="/image/pic-1.jpg" alt="">
+             <div class="info">
+                <h3>john deo</h3>
+                <span>21-10-2023</span>
+             </div>
+          </div>
+          <div class="thumb">
+             <img src="image/HTML ‫‬.png" alt="">
+          </div>
+          <button class="complete-btn">complete HTML tutorial</button>
+       </div>
+ 
+       <div class="box">
+        <div class="tutor">
+           <img src="/image/pic-1.jpg" alt="">
+           <div class="info">
+              <h3>john deo</h3>
+              <span>21-10-2023</span>
+           </div>
+        </div>
+        <div class="thumb">
+           <img src="image/CSS ‫‬.png" alt="">
+        </div>
+        <button class="complete-btn">complete CSS tutorial</button>
+     </div>
+
+
+     <div class="box">
+      <div class="tutor">
+         <img src="/image/pic-1.jpg" alt="">
+         <div class="info">
+            <h3>john deo</h3>
+            <span>21-10-2023</span>
+         </div>
+      </div>
+      <div class="thumb">
+         <img src="image/JS.png" alt="">
+      </div>
+      <button class="complete-btn">complete JS tutorial</button>
+   </div>
+
+   <div class="box">
+    <div class="tutor">
+       <img src="/image/pic-1.jpg" alt="">
+       <div class="info">
+          <h3>john deo</h3>
+          <span>21-10-2023</span>
+       </div>
+    </div>
+    <div class="thumb">
+       <img src="image/bootstrap.png" alt="">
+    </div>
+    <button class="complete-btn">complete JS tutorial</button>
+ </div>
+
+
+       
+    </div>
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Smarty Platform. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

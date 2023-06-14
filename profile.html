@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile Page</title>
+  
+  <style>
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+#logout-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#logout-button:hover {
+  background-color: darkred;
+}
+
+h1 {
+  margin: 0;
+}
+
+.profile-section {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+h2 {
+  margin: 0;
+  color: #333;
+}
+
+.course-info {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+p {
+  margin: 0;
+  color: #888;
+}
+
+.certificate-info {
+  margin-bottom: 20px;
+}
+
+footer p {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.certificate-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+}
+
+.certificate-list li {
+  flex-basis: calc(33.33% - 20px);
+}
+
+.certificate-list a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.certificate-list img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.download-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.download-button:hover {
+  background-color: #45a049;
+}
+
+
+@media only screen and (max-width: 600px) {
+  header {
+    padding: 10px;
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .certificate-list li {
+    flex-basis: calc(50% - 20px);
+  }
+
+  .cover{
+  height: 100vh;
+}
+}
+
+@media only screen and (max-width: 400px) {
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .certificate-list li {
+    flex-basis: 100%;
+  }
+
+  .cover{
+  height: 100vh;
+}
+
+}
+    
+    footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Smarty Platform</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><button id="logout-button" onclick="location.href='index.html'">Logout</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cover">
+    <section class="profile-section">
+      <div class="profile-info">
+        <img src="./image/user profile.png" alt="Profile Picture">
+        <h2>Welcome, Ghalia!</h2>
+      </div>
+
+      <div class="course-info">
+        <h3>User Information</h3>
+        <p>Total Courses: <span id="total-courses">3</span></p><br>
+        <p>Completed Courses: <span id="completed-courses">2</span></p><br>
+        <p>Pending Courses: <span id="pending-courses">1</span></p><br><br>
+      </div>
+
+      <main>
+        <section class="dashboard-section">
+          <h2>Your Certificates</h2><br>
+          <ul id="certificate-list" class="certificate-list"></ul>
+        </section>
+      </main>
+
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Smarty Platform. All Rights Reserved.</p>
+    </div>
+  </footer>
+ 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const certificateList = document.getElementById("certificate-list");
+
+      // Simulated user data
+      const user = {
+        name: "Ghalia",
+        profilePicture: "user.jpg",
+        courses: {
+          total: 5,
+          completed: 3,
+          pending: 2
+        },
+        certificates: [
+          { title: "Certificate 1", imageUrl: "./image/CERTIFICATE_LANDING_PAGE_GUWUZGFUVSLL.jpeg" },
+          { title: "Certificate 2", imageUrl: "./image/CERTIFICATE_LANDING_PAGE_HY79H256RN42.jpeg" },
+        ]
+      };
+
+      user.certificates.forEach(function(certificate) {
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = certificate.imageUrl;
+        link.download = certificate.title + ".jpg";
+        const image = document.createElement("img");
+        image.src = certificate.imageUrl;
+        image.alt = certificate.title;
+        const downloadButton = document.createElement("button");
+        downloadButton.textContent = "Download";
+        downloadButton.classList.add("download-button");
+        downloadButton.addEventListener("click", function(event) {
+          event.stopPropagation();
+          link.click();
+        });
+        listItem.appendChild(link);
+        link.appendChild(image);
+        listItem.appendChild(downloadButton);
+        certificateList.appendChild(listItem);
+      });
+    });
+  </script>
+</body>
+</html>
